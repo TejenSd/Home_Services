@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+    if (Session["Email"] == null)
+    {
+        Response.Redirect("~/Users/UserLogin");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+</head>
+<body>
+    <div> 
+        <h1>Welcome User</h1>
+        <a href="@Url.Action("LogOut","Users")">LOGOUT</a>
+    </div>
+</body>
+</html>
