@@ -1,7 +1,7 @@
 ﻿
 @{
     Layout = null;
-    if (Session["Email"] == null)
+    if (Session["First_Name"] == null)
     {
         Response.Redirect("~/Users/UserLogin");
     }
@@ -15,8 +15,9 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <div> 
-        <h1>Welcome User</h1>
+    <div>
+        
+        <h3>Welcome Back  @Session["First_Name"]</h3>
         <a href="@Url.Action("LogOut","Users")">LOGOUT</a>
     </div>
 </body>

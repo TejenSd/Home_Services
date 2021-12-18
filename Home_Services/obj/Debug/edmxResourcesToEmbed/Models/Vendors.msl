@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Home_ServicesModel1StoreContainer" CdmEntityContainer="Home_ServicesEntities4">
+    <EntitySetMapping Name="Vendor_Registration">
+      <EntityTypeMapping TypeName="Home_ServicesModel1.Vendor_Registration">
+        <MappingFragment StoreEntitySet="Vendor_Registration">
+          <ScalarProperty Name="Vendor_Id" ColumnName="Vendor_Id" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

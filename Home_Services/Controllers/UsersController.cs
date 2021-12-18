@@ -23,7 +23,7 @@ namespace Home_Services.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(User_Registration userModel)
         {
-            using (Home_ServicesEntities1 obj = new Home_ServicesEntities1())
+            using (Home_ServicesEntities5 obj = new Home_ServicesEntities5())
             {
 
                 if (obj.User_Registration.Any(x => x.Email == userModel.Email))
@@ -52,7 +52,7 @@ namespace Home_Services.Controllers
         [HttpPost]
         public ActionResult Authorise(Home_Services.Models.User_Registration userModel)
         {
-            using (Home_ServicesEntities1 db = new Home_ServicesEntities1())
+            using (Home_ServicesEntities5 db = new Home_ServicesEntities5())
             {
                 var userDetails = db.User_Registration.Where(x => x.Email == userModel.Email && x.Password == userModel.Password).FirstOrDefault();
                 if (userDetails == null)
@@ -62,7 +62,7 @@ namespace Home_Services.Controllers
                 }
                 else
                 {
-                    Session["Email"] = userDetails.Email;
+                    Session["First_Name"] = userDetails.First_Name;
                     
                     return RedirectToAction("Dashboard", "UserDashboard");
                 }
@@ -71,7 +71,7 @@ namespace Home_Services.Controllers
 
         public ActionResult LogOut()
         {
-            string userId = (string)Session["Email"];
+            string First_Name = Session["First_Name"].ToString();
             Session.Abandon();
             return RedirectToAction("UserLogin", "Users");
         }

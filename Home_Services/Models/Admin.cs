@@ -11,14 +11,20 @@ namespace Home_Services.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
 
     public partial class Admin
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Admin()
+        {
+            this.Feedback_Details = new HashSet<Feedback_Details>();
+        }
+
         public int S_No { get; set; }
 
-        [Required(ErrorMessage ="This Field is required")]
+        [Required(ErrorMessage = "This Field is required")]
         [DisplayName("Admin Id")]
         public string Admin_Id { get; set; }
 
@@ -32,5 +38,8 @@ namespace Home_Services.Models
 
 
         public string LoginErrorMessage { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback_Details> Feedback_Details { get; set; }
     }
 }

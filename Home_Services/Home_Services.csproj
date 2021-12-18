@@ -140,44 +140,46 @@
     <Compile Include="Controllers\Home_ServicesEntities.cs" />
     <Compile Include="Controllers\UserDashboardController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\VendorDashboardController.cs" />
+    <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>Admins.tt</DependentUpon>
+      <DependentUpon>dbModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admins.Context.cs">
+    <Compile Include="Models\Bill_Details.cs">
+      <DependentUpon>dbModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Booking_Details.cs">
+      <DependentUpon>dbModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Admins.Context.tt</DependentUpon>
+      <DependentUpon>dbModels.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admins.cs">
+    <Compile Include="Models\dbModels.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Admins.tt</DependentUpon>
+      <DependentUpon>dbModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admins.Designer.cs">
+    <Compile Include="Models\dbModels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Admins.edmx</DependentUpon>
+      <DependentUpon>dbModels.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Users.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Users.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Users.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Users.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Users.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Users.edmx</DependentUpon>
+    <Compile Include="Models\Feedback_Details.cs">
+      <DependentUpon>dbModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User_Registration.cs">
-      <DependentUpon>Users.tt</DependentUpon>
+      <DependentUpon>dbModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vendor_Registration.cs">
+      <DependentUpon>dbModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vendor_Service_Details.cs">
+      <DependentUpon>dbModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -190,41 +192,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Admins.Context.tt">
+    <Content Include="Models\dbModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Admins.edmx</DependentUpon>
-      <LastGenOutput>Admins.Context.cs</LastGenOutput>
+      <DependentUpon>dbModels.edmx</DependentUpon>
+      <LastGenOutput>dbModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Admins.tt">
+    <Content Include="Models\dbModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Admins.edmx</DependentUpon>
-      <LastGenOutput>Admins.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Users.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Users.edmx</DependentUpon>
-      <LastGenOutput>Users.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Users.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Users.edmx</DependentUpon>
-      <LastGenOutput>Users.cs</LastGenOutput>
+      <DependentUpon>dbModels.edmx</DependentUpon>
+      <LastGenOutput>dbModels.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Users.edmx">
+    <EntityDeploy Include="Models\dbModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Users.Designer.cs</LastGenOutput>
+      <LastGenOutput>dbModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Users.edmx.diagram">
-      <DependentUpon>Users.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Admins.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Admins.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Admins.edmx.diagram">
-      <DependentUpon>Admins.edmx</DependentUpon>
+    <Content Include="Models\dbModels.edmx.diagram">
+      <DependentUpon>dbModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -256,6 +241,9 @@
     <Content Include="Views\UserDashboard\Dashboard.cshtml" />
     <Content Include="Views\Admins\AdminLogin.cshtml" />
     <Content Include="Views\AdminDashboard\Dashboard.cshtml" />
+    <Content Include="Views\Vendors\VendorRegister.cshtml" />
+    <Content Include="Views\VendorDashboard\Dashboard.cshtml" />
+    <Content Include="Views\Vendors\VendorLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,45 +12,60 @@ namespace Home_Services.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    
     public partial class User_Registration
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User_Registration()
+        {
+            this.Booking_Details = new HashSet<Booking_Details>();
+            this.Feedback_Details = new HashSet<Feedback_Details>();
+            this.Bill_Details = new HashSet<Bill_Details>();
+        }
+
         public int User_Id { get; set; }
-        
-        
+
+
         [Required]
         [Display(Name = "First Name")]
         public string First_Name { get; set; }
-        
+
         [Required]
         [Display(Name = "Last Name")]
         public string Last_Name { get; set; }
-        
+
         [Required]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        
+
         [Required]
-        [Display(Name ="Date Of Birth")]
+        [Display(Name = "Date Of Birth")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true , DataFormatString ="{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public string DOB { get; set; }
-        
+
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        
+
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password")]
         [Display(Name = "Confirm Password")]
         public string Confirm_Password { get; set; }
-        
+
         [Required]
         [Display(Name = "Contact Number")]
         public string Contact_Number { get; set; }
 
         public string LoginErrorMessage { get; set; }
-    }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Booking_Details> Booking_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback_Details> Feedback_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bill_Details> Bill_Details { get; set; }
+    }
 }

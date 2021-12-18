@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Home_ServicesModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Vendor_Registration">
+    <Key>
+      <PropertyRef Name="Vendor_Id" />
+    </Key>
+    <Property Name="Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="Contact_Number" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="Home_ServicesModel1StoreContainer">
+    <EntitySet Name="Vendor_Registration" EntityType="Self.Vendor_Registration" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

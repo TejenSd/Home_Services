@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    <style>
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -54,8 +69,8 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Vendor <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Vendor Registartion", "AddOrEdit", "Users", null, new { id = "item 1" })</li>
-                            <li>@Html.ActionLink("Vendor Login", "Index", "Home", null, new { id = "item 2" })</li>
+                            <li>@Html.ActionLink("Vendor Registartion", "VendorRegister", "Vendors", null, new { id = "item 1" })</li>
+                            <li>@Html.ActionLink("Vendor Login", "VendorLogin", "Vendors", null, new { id = "item 2" })</li>
 
                         </ul>
                     </li>

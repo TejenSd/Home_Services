@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Home_ServicesModelStoreContainer" CdmEntityContainer="Home_ServicesEntities1">
+    <EntitySetMapping Name="User_Registration">
+      <EntityTypeMapping TypeName="Home_ServicesModel.User_Registration">
+        <MappingFragment StoreEntitySet="User_Registration">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

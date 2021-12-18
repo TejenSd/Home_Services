@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Home_ServicesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="S_No" />
+    </Key>
+    <Property Name="S_No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Admin_Id" Type="varchar" MaxLength="30" />
+    <Property Name="Admin_Password" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Bill_Details">
+    <Key>
+      <PropertyRef Name="Payment_Id" />
+    </Key>
+    <Property Name="Payment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Booking_Id" Type="int" />
+    <Property Name="Vendor_Id" Type="int" />
+    <Property Name="Service_Id" Type="int" />
+    <Property Name="Price" Type="varchar" MaxLength="50" />
+    <Property Name="Booking_Status" Type="varchar" MaxLength="50" />
+    <Property Name="Payment_Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Booking_Details">
+    <Key>
+      <PropertyRef Name="Booking_Id" />
+    </Key>
+    <Property Name="Booking_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Service_Id" Type="int" />
+    <Property Name="Price" Type="varchar" MaxLength="50" />
+    <Property Name="User_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Start_Time" Type="varchar" MaxLength="50" />
+    <Property Name="End_Time" Type="varchar" MaxLength="50" />
+    <Property Name="Customer_Address" Type="varchar" MaxLength="50" />
+    <Property Name="Vendor_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Feedback_Details">
+    <Key>
+      <PropertyRef Name="Feedback_Id" />
+    </Key>
+    <Property Name="Feedback_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Admin_Id" Type="int" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Vendor_Id" Type="int" />
+    <Property Name="Feedback" Type="varchar" MaxLength="500" />
+    <Property Name="Rating" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User_Registration">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Contact_Number" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Vendor_Registration">
+    <Key>
+      <PropertyRef Name="Vendor_Id" />
+    </Key>
+    <Property Name="Vendor_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="Contact_Number" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vendor_Service_Details">
+    <Key>
+      <PropertyRef Name="Service_Id" />
+    </Key>
+    <Property Name="Vendor_Id" Type="int" Nullable="false" />
+    <Property Name="Service_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="varchar" MaxLength="50" />
+    <Property Name="Start_Time" Type="varchar" MaxLength="50" />
+    <Property Name="End_Time" Type="varchar" MaxLength="50" />
+    <Property Name="Map_Details" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Bill_Deta__Booki__60A75C0F">
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="0..1" />
+    <End Role="Bill_Details" Type="Self.Bill_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking_Details">
+        <PropertyRef Name="Booking_Id" />
+      </Principal>
+      <Dependent Role="Bill_Details">
+        <PropertyRef Name="Booking_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Deta__Servi__5FB337D6">
+    <End Role="Vendor_Service_Details" Type="Self.Vendor_Service_Details" Multiplicity="0..1" />
+    <End Role="Bill_Details" Type="Self.Bill_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor_Service_Details">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Bill_Details">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Deta__User___5EBF139D">
+    <End Role="User_Registration" Type="Self.User_Registration" Multiplicity="0..1" />
+    <End Role="Bill_Details" Type="Self.Bill_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Registration">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Bill_Details">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill_Deta__Vendo__5DCAEF64">
+    <End Role="Vendor_Registration" Type="Self.Vendor_Registration" Multiplicity="0..1" />
+    <End Role="Bill_Details" Type="Self.Bill_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor_Registration">
+        <PropertyRef Name="Vendor_Id" />
+      </Principal>
+      <Dependent Role="Bill_Details">
+        <PropertyRef Name="Vendor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_D__Servi__59FA5E80">
+    <End Role="Vendor_Service_Details" Type="Self.Vendor_Service_Details" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor_Service_Details">
+        <PropertyRef Name="Service_Id" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="Service_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_D__User___59063A47">
+    <End Role="User_Registration" Type="Self.User_Registration" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Registration">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking_D__Vendo__5812160E">
+    <End Role="Vendor_Registration" Type="Self.Vendor_Registration" Multiplicity="0..1" />
+    <End Role="Booking_Details" Type="Self.Booking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor_Registration">
+        <PropertyRef Name="Vendor_Id" />
+      </Principal>
+      <Dependent Role="Booking_Details">
+        <PropertyRef Name="Vendor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback___Admin__5CD6CB2B">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Feedback_Details" Type="Self.Feedback_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="S_No" />
+      </Principal>
+      <Dependent Role="Feedback_Details">
+        <PropertyRef Name="Admin_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback___User___5BE2A6F2">
+    <End Role="User_Registration" Type="Self.User_Registration" Multiplicity="0..1" />
+    <End Role="Feedback_Details" Type="Self.Feedback_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Registration">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Feedback_Details">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback___Vendo__5AEE82B9">
+    <End Role="Vendor_Registration" Type="Self.Vendor_Registration" Multiplicity="0..1" />
+    <End Role="Feedback_Details" Type="Self.Feedback_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor_Registration">
+        <PropertyRef Name="Vendor_Id" />
+      </Principal>
+      <Dependent Role="Feedback_Details">
+        <PropertyRef Name="Vendor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vendor_Se__Vendo__571DF1D5">
+    <End Role="Vendor_Registration" Type="Self.Vendor_Registration" Multiplicity="1" />
+    <End Role="Vendor_Service_Details" Type="Self.Vendor_Service_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor_Registration">
+        <PropertyRef Name="Vendor_Id" />
+      </Principal>
+      <Dependent Role="Vendor_Service_Details">
+        <PropertyRef Name="Vendor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Home_ServicesModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bill_Details" EntityType="Self.Bill_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking_Details" EntityType="Self.Booking_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback_Details" EntityType="Self.Feedback_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Registration" EntityType="Self.User_Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor_Registration" EntityType="Self.Vendor_Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor_Service_Details" EntityType="Self.Vendor_Service_Details" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Bill_Deta__Booki__60A75C0F" Association="Self.FK__Bill_Deta__Booki__60A75C0F">
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+      <End Role="Bill_Details" EntitySet="Bill_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Deta__Servi__5FB337D6" Association="Self.FK__Bill_Deta__Servi__5FB337D6">
+      <End Role="Vendor_Service_Details" EntitySet="Vendor_Service_Details" />
+      <End Role="Bill_Details" EntitySet="Bill_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Deta__User___5EBF139D" Association="Self.FK__Bill_Deta__User___5EBF139D">
+      <End Role="User_Registration" EntitySet="User_Registration" />
+      <End Role="Bill_Details" EntitySet="Bill_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill_Deta__Vendo__5DCAEF64" Association="Self.FK__Bill_Deta__Vendo__5DCAEF64">
+      <End Role="Vendor_Registration" EntitySet="Vendor_Registration" />
+      <End Role="Bill_Details" EntitySet="Bill_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_D__Servi__59FA5E80" Association="Self.FK__Booking_D__Servi__59FA5E80">
+      <End Role="Vendor_Service_Details" EntitySet="Vendor_Service_Details" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_D__User___59063A47" Association="Self.FK__Booking_D__User___59063A47">
+      <End Role="User_Registration" EntitySet="User_Registration" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking_D__Vendo__5812160E" Association="Self.FK__Booking_D__Vendo__5812160E">
+      <End Role="Vendor_Registration" EntitySet="Vendor_Registration" />
+      <End Role="Booking_Details" EntitySet="Booking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback___Admin__5CD6CB2B" Association="Self.FK__Feedback___Admin__5CD6CB2B">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Feedback_Details" EntitySet="Feedback_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback___User___5BE2A6F2" Association="Self.FK__Feedback___User___5BE2A6F2">
+      <End Role="User_Registration" EntitySet="User_Registration" />
+      <End Role="Feedback_Details" EntitySet="Feedback_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback___Vendo__5AEE82B9" Association="Self.FK__Feedback___Vendo__5AEE82B9">
+      <End Role="Vendor_Registration" EntitySet="Vendor_Registration" />
+      <End Role="Feedback_Details" EntitySet="Feedback_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vendor_Se__Vendo__571DF1D5" Association="Self.FK__Vendor_Se__Vendo__571DF1D5">
+      <End Role="Vendor_Registration" EntitySet="Vendor_Registration" />
+      <End Role="Vendor_Service_Details" EntitySet="Vendor_Service_Details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
